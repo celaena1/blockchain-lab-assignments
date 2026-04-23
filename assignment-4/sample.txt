@@ -1,0 +1,8 @@
+This is a sample file for IPFS upload testing.
+
+You can replace this with any document, image, or data you want to upload to IPFS.
+
+Use the ipfs-example.js script to upload this file:
+  npm run ipfs:upload assignment-4/sample.txt
+
+The script will return a CID (Content Identifier) that you can use to retrieve this file later via IPFS gateway.

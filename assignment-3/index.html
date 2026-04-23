@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChainCart Transactions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div>
+          <p class="eyebrow">Blockchain Commerce Interface</p>
+          <h1>Sign and send product transactions with MetaMask.</h1>
+        </div>
+        <button id="connectWallet" class="button button-primary">Connect MetaMask</button>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy card card-accent">
+          <p class="section-label">What this demo does</p>
+          <p class="lead">
+            Capture product details, generate a signed approval message, and submit an on-chain
+            payment transaction from the same screen.
+          </p>
+          <div class="stat-row">
+            <article>
+              <span class="stat-value" id="walletState">Not connected</span>
+              <span class="stat-label">Wallet status</span>
+            </article>
+            <article>
+              <span class="stat-value" id="networkName">Unknown</span>
+              <span class="stat-label">Active network</span>
+            </article>
+            <article>
+              <span class="stat-value" id="accountAddress">--</span>
+              <span class="stat-label">Selected account</span>
+            </article>
+          </div>
+        </section>
+
+        <aside class="hero-panel card">
+          <p class="section-label">MetaMask flow</p>
+          <ol class="steps">
+            <li>Connect the wallet.</li>
+            <li>Review product order details.</li>
+            <li>Sign the purchase intent.</li>
+            <li>Send the blockchain transaction.</li>
+          </ol>
+          <p class="panel-note">
+            The transaction includes the product payload encoded in the transaction data field.
+          </p>
+        </aside>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="card form-card">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Transaction builder</p>
+            <h2>Product transfer</h2>
+          </div>
+          <span class="pill">Ethereum / EVM compatible</span>
+        </div>
+
+        <form id="transactionForm" class="transaction-form">
+          <label>
+            Product name
+            <input type="text" id="productName" name="productName" placeholder="Organic Coffee Beans" required>
+          </label>
+
+          <div class="two-column">
+            <label>
+              Product ID
+              <input type="text" id="productId" name="productId" placeholder="SKU-1042" required>
+            </label>
+            <label>
+              Quantity
+              <input type="number" id="quantity" name="quantity" min="1" step="1" value="1" required>
+            </label>
+          </div>
+
+          <div class="two-column">
+            <label>
+              Unit price (ETH)
+              <input type="number" id="unitPrice" name="unitPrice" min="0" step="0.0001" placeholder="0.015" required>
+            </label>
+            <label>
+              Receiver wallet
+              <input type="text" id="recipient" name="recipient" placeholder="0x..." required>
+            </label>
+          </div>
+
+          <label>
+            Customer / buyer
+            <input type="text" id="buyerName" name="buyerName" placeholder="Aarav Enterprises" required>
+          </label>
+
+          <label>
+            Notes
+            <textarea id="notes" name="notes" rows="4" placeholder="Delivery before 5 PM, quality grade A."></textarea>
+          </label>
+
+          <div class="action-row">
+            <button type="button" id="signButton" class="button button-secondary">Sign Purchase Intent</button>
+            <button type="submit" class="button button-primary">Send Transaction</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="side-stack">
+        <article class="card">
+          <div class="card-heading">
+            <div>
+              <p class="section-label">Payload preview</p>
+              <h2>Transaction metadata</h2>
+            </div>
+          </div>
+          <pre id="payloadPreview" class="code-block"></pre>
+        </article>
+
+        <article class="card">
+          <div class="card-heading">
+            <div>
+              <p class="section-label">Result</p>
+              <h2>Wallet response</h2>
+            </div>
+          </div>
+          <div id="statusBox" class="status-box info">
+            Connect MetaMask to begin signing and sending transactions.
+          </div>
+          <div class="signature-box">
+            <p class="section-label">Last signature</p>
+            <code id="signatureOutput">No signature yet</code>
+          </div>
+          <div class="signature-box">
+            <p class="section-label">Last transaction hash</p>
+            <code id="hashOutput">No transaction sent yet</code>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "blockchain-lab-assignments",
+  "version": "1.0.0",
+  "description": "Blockchain Laboratory Assignments - Solidity Smart Contracts & Web3 Integration",
+  "author": "Kanchan Shendage",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "ipfs:upload": "node assignment-4/ipfs-example.js",
+    "test": "hardhat test"
+  },
+  "dependencies": {
+    "ethers": "^6.7.1",
+    "hardhat": "^2.19.2",
+    "hardhat-deploy": "^0.11.43",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
